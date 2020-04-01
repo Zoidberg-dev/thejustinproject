@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Justin</title>
+	<title>About Justin</title>
 </svelte:head>
 
 <h1>About Justin</h1>

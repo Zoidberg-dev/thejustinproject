@@ -40,7 +40,7 @@
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
-	<figcaption>HiGH FIVE!</figcaption>
+	<figcaption>Cyka</figcaption>
 </figure>
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>

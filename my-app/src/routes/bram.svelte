@@ -5,7 +5,7 @@
 </style>
 
 <svelte:head>
-	<title>Bram</title>
+	<title>About Bram</title>
 </svelte:head>
 
 <h1>About Bram</h1>

@@ -32,5 +32,12 @@
     "rollup-plugin-babel": "^4.0.2",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^4.0.4"
-  }
+  },
+  "bit": {
+    "env": {
+      "compiler": "svelte-compiler@14.7.6"
+    },
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
+   }
 }

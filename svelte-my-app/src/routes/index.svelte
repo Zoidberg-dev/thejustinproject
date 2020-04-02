@@ -1,5 +1,5 @@
 <style>
-	h1, h4, figure, p {
+	h1, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -10,9 +10,7 @@
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
 	}
-h4 {
-	margin-bottom: 20px;
-}
+
 	figure {
 		margin: 0 0 1em 0;
 	}

@@ -1,0 +1,12 @@
+{
+  "name": "The Justin Project",
+  "short_name": "JP",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+    }
+  ]
+}

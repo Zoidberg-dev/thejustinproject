@@ -5,10 +5,8 @@
 <section>
     <div class="columns margins">
       <div>
-        <Textfield bind:value={valueStandardA} label="Label" input$aria-controls="helper-text-standard-a" input$aria-describedby="helper-text-standard-a" />
-        <HelperText id="helper-text-standard-a">Helper Text</HelperText>
-
-        <pre class="status">Value: {valueStandardA}</pre>
+        <Textfield bind:value={valueStandardA} label="Add to ToDo list" input$aria-controls="helper-text-standard-a" input$aria-describedby="helper-text-standard-a" />
+        <HelperText id="helper-text-standard-a">what to do</HelperText>
       </div>
       <div>
         <Button on:click={() => clicked++} variant="unelevated" class="button-shaped-round"><Icon class="material-icons">add</Icon><Label>Add</Label></Button>
@@ -27,21 +25,11 @@
         </Header>
         <Content>
           <List>
-            <Item href="javascript:void(0)" on:click={() => clicked = 'Gray Kittens'}>
-              <Text>Gray Kittens</Text>
+            {#each todos as todo }
+            <Item on:click={() => clickedItem(todo.title,todo.description) }>
+              <Text>{todo.title}</Text>
             </Item>
-            <Item href="javascript:void(0)" on:click={() => clicked = 'A Space Rocket'}>
-              <Text>A Space Rocket</Text>
-            </Item>
-            <Item href="javascript:void(0)" on:click={() => clicked = '100 Pounds of Gravel'}>
-              <Text>100 Pounds of Gravel</Text>
-            </Item>
-            <Item href="javascript:void(0)" on:click={() => clicked = 'All of the Shrimp'}>
-              <Text>All of the Shrimp</Text>
-            </Item>
-            <Item href="javascript:void(0)" on:click={() => clicked = 'A Planet with a Mall'}>
-              <Text>A Planet with a Mall</Text>
-            </Item>
+            {/each}
           </List>
         </Content>
       </Drawer>
@@ -52,7 +40,8 @@
             <Title>Description:</Title>
             <Subtitle>What about?</Subtitle>
         </Header>
-          <pre class="status">Clicked: {clicked}</pre>
+          <pre>Title: {clickedTitle}</pre>
+          <pre>Description:<br>{clickedDescription}</pre>
         </main>
       </AppContent>
     </div>
@@ -65,7 +54,8 @@
     import Button, {Label, Icon} from '@smui/button';
     import List, {Item, Text} from '@smui/list';
     import H6 from '@smui/common/H6.svelte';
-    let clicked = 'nothing yet';
+    let clickedTitle = 'nothing yet';
+    let clickedDescription = '';
 
     //Textfield  
     import Textfield, {Input, Textarea} from '@smui/textfield';
@@ -76,6 +66,24 @@
     let dirtyClickable = false;
     let invalidClickable = false;
     let valueStandardA = '';
+    let clicked = 0;
+
+  let uid = 1;
+
+	let todos = [
+		{ id: uid++, done: false, title: 'write some docs', description: 'stupid work stuff'},
+		{ id: uid++, done: false, title: 'start writing blog post', description: 'write about your sex life aka very short story'},
+		{ id: uid++, done: true,  title: 'buy some milk',  description: 'jack off and put in bottle'},
+		{ id: uid++, done: false, title: 'mow the lawn',  description: 'grab lawn mower and mow the lawn'},
+		{ id: uid++, done: false, title: 'feed the turtle',  description: 'feed your best friend y̬̠̑̽o̟̗̔͂ŭ̳r̡̩͉̓̽͡ ̮̞̤̇̀͛̀͜ò̘̠̖͈̅̓͂̏͢nľ̖͙̈y̫̝̣͆̑̃̔͜ f͞ͅŗ̛̳̥̦͂̒̓i̯̜̝͛͌͒eṅ̝̠̬̩̐͆͊͜͡d̳̭͇̰̊͛̆̅'},
+		{ id: uid++, done: false, title: 'fix some bugs',  description: 'kill the bugs'},
+  ];
+  
+  function clickedItem(arg1, arg2) {
+    clickedTitle = arg1;
+    clickedDescription = arg2;
+  }
+
 </script>
 
 <style>

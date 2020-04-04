@@ -64,7 +64,7 @@
 
 <h1>About Justin</h1>
 
-<p>This is the 'about' page about Justin. There's not much here,<strong>yet...</strong></p>
+<p>This is the 'about' page about Justin. There's not much here, <strong>yet...</strong></p>
 <div>
 <form>
 	<h1>Login Page!</h1>

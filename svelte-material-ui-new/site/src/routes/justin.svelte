@@ -14,3 +14,25 @@
     <input type="password" id="user-pw" name="user-pw">
   </form>
 </section>
+
+<section>
+<h2>Read More Read Less Button</h2>
+
+{#if readtext.showText}
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet</p>
+{/if}
+
+{#if readtext.showText}
+  <button on:click={()=>toggle()}>Show Less</button>
+{:else}
+  <button on:click={toggle}>Read text</button>
+{/if}
+</section>
+
+<script>
+let readtext = { showText: false };
+
+	function toggle() {
+    readtext.showText = !readtext.showText;
+  }
+</script>

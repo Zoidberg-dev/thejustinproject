@@ -45,13 +45,52 @@
         </Header>
         <div>
           <Textfield textarea bind:value={clickedDescription} on:keyup={() => saveDescription(currentToDo, clickedDescription)} label="Description:" input$aria-controls="helper-text-textarea" input$aria-describedby="helper-text-textarea" />
-          <HelperText id="helper-text-textarea">This is a description</HelperText>
+          <HelperText id="helper-text-textarea">This is a description about {clickedTitle}</HelperText>
         </div>  
         </main>
       </AppContent>
     </div>
   </div>
 </section>
+<div class='board'>
+  <div class="left">
+    <h2>todo</h2>
+    {#each todos.filter(t => !t.done) as todo (todo.id)}
+    <div style="margin-bottom: 0.5em;">
+      <div class="paper-container">
+        <Paper class="paper-demo">
+          <div>
+            <FormField>
+              <Checkbox bind:checkbox={todo.done} value={todo.id} on:change={() => mark(todo, true)}/>
+              <span slot="label">{todo.title}</span>
+              <IconButton class="material-icons" on:click={() => removeToDo(todo)} ripple={false}>delete</IconButton>
+            </FormField>
+          </div>
+        </Paper>
+      </div>
+    </div>
+    {/each}
+  </div>
+
+  <div class="right">
+    <h2>done</h2>
+    {#each todos.filter(t => t.done) as todo (todo.id)}
+    <div style="margin-bottom: 0.5em;">
+      <div class="paper-container">
+        <Paper class="paper-demo">
+          <div>
+            <FormField>
+              <Checkbox bind:checkbox={todo.done} checked value={todo.id} on:change={() => mark(todo, false)}/>
+              <span slot="label">{todo.title}</span>
+              <IconButton class="material-icons" on:click={() => removeToDo(todo)} ripple={false}>delete</IconButton>
+            </FormField>
+          </div>
+        </Paper>
+      </div>
+    </div>
+    {/each}
+  </div>  
+</div>
 
 <script>
     //Drawer
@@ -86,6 +125,12 @@
   ];
   let currentToDo;
 
+  function mark(todo, done) {
+		todo.done = done;
+		removeToDo(todo);
+		todos = todos.concat(todo);
+	}
+
   function saveDescription(currentToDo, clickedDescription) {
     currentToDo.description = clickedDescription;
   }
@@ -97,6 +142,11 @@
       title: input,
 			description: ''
     };
+
+    currentToDo = todo;
+    clickedTitle = input;
+    currentToDo.description = clickedDescription;
+    clickedDescription = '';
     
     todos = [todo, ...todos];
 		valueStandardA = '';
@@ -111,14 +161,35 @@
     clickedDescription = arg2;
   }
 
+  //Paper
+  import Paper from '@smui/paper';
+
+  //Checkbox
+  let done;
+  import FormField from '@smui/form-field';
+  import Checkbox from '@smui/checkbox';
+
+
 </script>
 
 <style>
+  h2 {
+    text-align: center;
+  }
+
+	.board {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1em;
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
    .drawer-container {
     display: flex;
     height: 500px;
-    max-width: 1000px;
-    border: 1px solid rgba(0,0,0,.1);
+    width: 1000px;
+    border: 1px solid rgba(212, 161, 161, 0.1);
     overflow: hidden;
     z-index: 0;
   }
@@ -131,8 +202,14 @@
    * :global(input.mdc-text-field__input) {
     width: 700px;
   }
+  
   .addToDoList {
     display: inline-flex;
     justify-content: space-between;
+  }
+
+    * :global(.paper-demo) {
+    margin: 0 auto;
+    max-width: 500px;
   }
 </style>

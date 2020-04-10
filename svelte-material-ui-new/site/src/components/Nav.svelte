@@ -39,6 +39,11 @@
       icon: 'assignment',
       label: 'To do',
       route: "/todo"
+    },
+    {
+      icon: 'local_pizza',
+      label: 'Pizza',
+      route: "/pizza"
     }
   ];
 

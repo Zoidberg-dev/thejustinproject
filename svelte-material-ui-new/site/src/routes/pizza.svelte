@@ -47,15 +47,15 @@
     </section>
     <div class="grid-container">
         <section class="bewerk-pizza-container">
-        <div>
-            <label>Placeholder pizza name</label>
+        <div class="pizza-name-container">
+            <label class="pizza-bewerk-labels">Placeholder pizza name</label>
         </div>
         <div>
              <img src={'pictures/pizza_americana.webp'} alt={'placeholder pizza'}>
         </div>
         <div class="pizza-sauce-container">
-            <label>Select your desired sauce</label>
-            <select class="pizza-sauce-dropdown">
+            <label class="pizza-bewerk-labels">Select your desired sauce</label>
+            <select class="pizza-bewerk-dropdowns">
             {#each pizzaSauces as pizzaSauce}
             
                 <option value={pizzaSauce}>
@@ -65,8 +65,8 @@
             </select>
             </div>
             <div class="pizza-size-container">
-            <label>Select your desired size</label>
-            <select class="pizza-size-dropdown">
+            <label class="pizza-bewerk-labels">Select your desired size</label>
+            <select class="pizza-bewerk-dropdowns">
             {#each pizzaSizes as pizzaSize}
             
                 <option value={pizzaSize}>
@@ -76,11 +76,11 @@
             </select>
             </div>
             <div class="pizza-amount-container">
-                <label>Amount</label>
-                    <input class="pizza-amount-counter" type="number" bind:value={pizzaAmount} min=1 max=10>
+                <label class="pizza-bewerk-labels">Amount</label>
+                    <input class="pizza-bewerk-dropdowns" type="number" bind:value={pizzaAmount} min=1 max=10>
             </div>
             <div class="pizza-toppings-container">
-            <label>Current pizza toppings</label>
+            <label class="pizza-bewerk-labels">Current pizza toppings</label>
                 <div class="current-toppings-container">
                         {#each addedPizzaToppings as addedPizzaTopping}
                         <label>
@@ -89,7 +89,7 @@
                         </label>
                         {/each}
                 </div>
-                <label>Add your desired toppings</label>
+                <label class="pizza-bewerk-labels">Add your desired toppings</label>
                 <div class="added-toppings-container">
                      {#each addedPizzaToppings as addedPizzaTopping}
                     <label>
@@ -113,6 +113,8 @@
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     height: auto;
+    font-family: 'Roboto';
+    font-size: 15px;
 }
 
 .main-content{
@@ -127,8 +129,7 @@
     grid-gap: 1em;
     margin: 0 auto;
     max-width: 625px;
-    font-size: 16px;
-    font-family: 'Roboto';
+    font-size: 12px;
 }
 
 .pizza-container{
@@ -144,46 +145,63 @@
     width: 300px;
     display: inline-block;
     overflow: visible;
+    box-sizing: border-box;
+    pointer-events: auto;
 }
 
 .bestelling-container{
     border: 3px solid rgba(212, 161, 161, 0.1);
     width: 300px;
     height: 600px;
+    
 }
-
 .pizza-sauce-container{
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto';
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
 }
 .pizza-size-container{
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto';
+
 }
 .pizza-amount-container{
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto';
+
+    margin-bottom: 16px;
 }
 .current-toppings-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 8px;
+    margin-bottom: 16px;
 }
 .added-toppings-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 8px;
 }
-.pizza-size-dropdown{
-    width: 180px
+.pizza-bewerk-dropdowns{
+    width: 180px;
+    font-family: 'Roboto';
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+
 }
-.pizza-sauce-dropdown{
-    width: 180px
+.pizza-toppings-container{
+
 }
-.pizza-amount-counter{
-    width: 180px
+.pizza-name-container{
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+}
+.pizza-bewerk-labels{
+    justify-content: center;
+    display: flex;
 }
 </style>
